@@ -1,6 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
+
+
+//Create a middleware that logs a message
+router.get((req, res, next) =>{
+console.log(`Request URL: ${req.url} - Time: ${new Date()}`);
+next();
+});
 router.get('/', (req, res)=>{
     res.send("Hello, World");
 
