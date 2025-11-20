@@ -1,23 +1,22 @@
-// Import the express module
-// Create an Express application
-// Set up the server to listen on port 3000
-// Log a message when the server starts
-
-const express = require('express');
+const express = require ('express');
 const app = express();
 const router = require('./routes/pages.js');
+const userRoute = require('./routes/users.js')
+const ejs = require('ejs');
 const port = 3000;
 
-//app.get('/', (req, res) =>{
-   // res.send("Hello, World!");
-    //});
+app.set('view engine','ejs');
+app.set('views', './views');
 
-
-app.use(router);
-
-app.listen(port, ()=>{
-console.log(`Server is running on port ${port}`);
+app.get('/', (req, res )=> {
+    res.send("Hello,  World!");
 });
 
-// Write your code here
+app.use(router);
+app.use(userRoute);
+
+app.listen(port, () =>{
+    console.log(`Server is running on http://localhost:${port}`)
+});
+
 
